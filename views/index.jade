@@ -1,0 +1,40 @@
+extends layout
+
+block content
+	.row
+		.twelve.columns.text-center
+			.panel
+				h1 rPi Servo Controller
+				h5.subheader 
+					| The <strong>only</strong> place to control the servo
+					| hooked up to this Raspberry Pi
+	.row
+		.six.columns.centered
+			.panel
+				.row
+					.six.columns.centered.text-center 
+						h3#sliderOutput 20
+						input(type='range', min='1', max='180', step='1')
+						br
+						br
+						a#blinkButton.button.alert Slider GO!
+						hr
+				.row
+					.six.columns
+						a.button.large.right Left
+					.six.columns
+						a.button.large.something Right
+				.row
+					hr
+					.six.columns.centered.text-center
+						h2 43˚
+						h4.subheader current position
+
+	script(type='text/javascript')
+		$("#blinkButton").on('click', function(){
+			$.get('/blink', function(){
+				});
+		});
+		$('.something').on('click', function(){
+			$.get('/turnRight');
+		});
